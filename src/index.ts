@@ -2,7 +2,7 @@ import { createConnection } from 'typeorm'
 
 import { Client } from './entities/Client'
 import { Banker } from './entities/Banker'
-import { Transactions } from './entities/Transaction'
+import { Transaction } from './entities/Transaction'
 
 const main = async () => {
     try {
@@ -13,7 +13,7 @@ const main = async () => {
             username: "postgres",
             password: "password",
             database: "typeORM",
-            entities: [Client, Banker, Transactions],
+            entities: [Client, Banker, Transaction],
             synchronize: true
         })
 

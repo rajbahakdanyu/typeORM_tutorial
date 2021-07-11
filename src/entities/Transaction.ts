@@ -3,9 +3,13 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from 'typeorm'
+
+import { Client } from './Client';
 
 export enum TransactionType {
     DEPOSIT = 'deposit',
@@ -27,6 +31,19 @@ export class Transactions extends BaseEntity {
         type: 'numeric',
     })
     amount: number;
+
+    @ManyToOne(
+        () => Client,
+        (client) => client.transactions,
+        {
+            onDelete: 'CASCADE',
+        }
+    )
+
+    @JoinColumn({
+        name: 'client_id',
+    })
+    client: Client;
 
     @CreateDateColumn()
     created_at: Date;

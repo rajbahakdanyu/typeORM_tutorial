@@ -1,7 +1,11 @@
 import {
     Entity,
-    Column
+    Column,
+    ManyToMany,
+    OneToMany
 } from 'typeorm'
+import { Banker } from './Banker'
+import { Transactions } from './Transaction'
 
 import { Person } from './utils/Person'
 
@@ -31,4 +35,15 @@ export class Client extends Person {
         default: []
     })
     family_members: string[]
+
+    @ManyToMany((type) => Banker, {
+        cascade: true,
+    })
+    bankers: Banker[];
+
+    @OneToMany(
+        () => Transactions,
+        (transaction) => transaction.client
+    )
+    transactions: Transaction[];
 }
