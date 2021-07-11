@@ -2,17 +2,18 @@ import { createConnection } from 'typeorm'
 
 import { Client } from './entities/Client'
 import { Banker } from './entities/Banker'
+import { Transactions } from './entities/Transaction'
 
 const main = async () => {
     try {
-        const connection = await createConnection({
+        await createConnection({
             type: "postgres",
             host: "localhost",
             port: 5432,
             username: "postgres",
             password: "password",
             database: "typeORM",
-            entities: [Client, Banker],
+            entities: [Client, Banker, Transactions],
             synchronize: true
         })
 
