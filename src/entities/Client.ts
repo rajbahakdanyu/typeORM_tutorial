@@ -4,9 +4,9 @@ import {
     ManyToMany,
     OneToMany
 } from 'typeorm'
-import { Banker } from './Banker'
-import { Transactions } from './Transaction'
 
+import { Banker } from './Banker'
+import { Transaction } from './Transaction'
 import { Person } from './utils/Person'
 
 @Entity('client')
@@ -42,7 +42,7 @@ export class Client extends Person {
     bankers: Banker[];
 
     @OneToMany(
-        () => Transactions,
+        () => Transaction,
         (transaction) => transaction.client
     )
     transactions: Transaction[];

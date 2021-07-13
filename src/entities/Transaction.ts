@@ -16,8 +16,8 @@ export enum TransactionType {
     WITHDRAW = 'withdraw',
 }
 
-@Entity('transactions')
-export class Transactions extends BaseEntity {
+@Entity('transaction')
+export class Transaction extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
 

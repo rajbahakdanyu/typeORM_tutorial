@@ -4,8 +4,8 @@ import {
     ManyToMany,
     JoinTable
 } from 'typeorm'
-import { Client } from './Client';
 
+import { Client } from './Client';
 import { Person } from './utils/Person'
 
 @Entity('banker')
